@@ -5,126 +5,139 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Plarty – Data Room</title>
   <style>
-    body {
-      font-family: "Segoe UI", sans-serif;
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      background: #f7f9fb;
-      color: #333;
     }
 
-    header {
-      background-color: #fff;
-      padding: 40px 20px 20px;
-      text-align: center;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+    html, body {
+      height: 100%;
+      font-family: 'Segoe UI', sans-serif;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-behavior: smooth;
+      background: #f4f7fa;
     }
 
-    header h1 {
-      margin: 0;
+    .wrapper {
+      display: flex;
+      height: 100vh;
+      width: 700vw; /* 7 sections x 100vw each */
+    }
+
+    .section {
+      flex: 0 0 100vw;
+      height: 100vh;
+      padding: 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: white;
+      border-right: 1px solid #eee;
+    }
+
+    .section:nth-child(odd) {
+      background: #f9f9f9;
+    }
+
+    .section h1 {
       font-size: 2.5em;
       color: #222;
-    }
-
-    header p {
-      font-size: 1.1em;
-      color: #666;
-    }
-
-    .container {
-      max-width: 700px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-
-    .card {
-      background: #fff;
-      padding: 20px 25px;
       margin-bottom: 20px;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-      transition: transform 0.2s ease;
     }
 
-    .card:hover {
-      transform: translateY(-4px);
+    .section p {
+      font-size: 1.1em;
+      color: #444;
+      max-width: 600px;
     }
 
-    .card h2 {
-      margin-top: 0;
-      font-size: 1.3em;
-    }
-
-    .card a {
-      display: inline-block;
-      margin-top: 10px;
+    .section a {
+      margin-top: 20px;
+      font-size: 1.1em;
+      color: #007acc;
       text-decoration: none;
-      color: #0077cc;
-      font-weight: 500;
+      font-weight: bold;
     }
 
-    .card a:hover {
-      text-decoration: underline;
+    nav {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 10;
     }
 
-    footer {
-      text-align: center;
-      padding: 20px;
+    nav a {
+      display: inline-block;
+      margin-right: 15px;
       font-size: 0.9em;
-      color: #aaa;
+      color: #007acc;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>Plarty Data Room</h1>
-    <p>Resources to understand our vision, product, and growth plan</p>
-  </header>
+  <nav>
+    <a href="#pitch">Pitch</a>
+    <a href="#summary">Executive Summary</a>
+    <a href="#vision">Grand Vision</a>
+    <a href="#website">Website</a>
+    <a href="#traction">Traction</a>
+    <a href="#investment">Investment</a>
+    <a href="#gtm">GTM Strategy</a>
+  </nav>
 
-  <div class="container">
+  <div class="wrapper">
 
-    <div class="card">
-      <h2>💼 Investment Proposal</h2>
-      <a href="Investment_Proposal.pdf" target="_blank">View Document →</a>
-    </div>
+    <section class="section" id="pitch">
+      <h1> Pitch Deck</h1>
+      <p>Our snapshot pitch deck for a quick yet complete view of Plarty.</p>
+      <a href="Pitch_Deck.pdf" target="_blank">View Pitch Deck →</a>
+    </section>
 
-    <div class="card">
-      <h2>📊 Pitch Deck</h2>
-      <a href="Pitch_Deck.pdf" target="_blank">View Slide Deck →</a>
-    </div>
+    <section class="section" id="summary">
+      <h1>📄 Executive Summary</h1>
+      <p>A 1-page overview capturing the core of our problem, solution, and market.</p>
+      <a href="Executive_Summary.pdf" target="_blank">Read Executive Summary →</a>
+    </section>
 
-    <div class="card">
-      <h2>📄 Executive Summary</h2>
-      <a href="Executive_Summary.pdf" target="_blank">Read Summary →</a>
-    </div>
+    <section class="section" id="vision">
+      <h1> Grand Vision</h1>
+      <p>Where we're heading — why Plarty exists and how we’ll reshape cultural connection globally.</p>
+      <a href="Grand_Vision.pdf" target="_blank">Explore Vision →</a>
+    </section>
 
-    <div class="card">
-      <h2>🌍 Grand Vision</h2>
-      <a href="Grand_Vision.pdf" target="_blank">Explore Our Vision →</a>
-    </div>
+    <section class="section" id="website">
+      <h1> Official Website</h1>
+      <p>Explore our live product, user experience, and brand presence online.</p>
+      <a href="https://plarty.com" target="_blank">Visit Website →</a>
+    </section>
 
-    <div class="card">
-      <h2>🔗 Official Website</h2>
-      <a href="https://plartyapp.com" target="_blank">Visit Website →</a>
-    </div>
+    <section class="section" id="traction">
+      <h1> Traction</h1>
+      <p>Milestones, early adoption, community validation, and product progress.</p>
+      <a href="Traction.pdf" target="_blank">See Traction Overview →</a>
+    </section>
 
-    <div class="card">
-      <h2>📱 App Store Links</h2>
-      <a href="https://apps.apple.com/app/idXXXXXXXXX" target="_blank">iOS App Store →</a><br/>
-      <a href="https://play.google.com/store/apps/details?id=com.plarty" target="_blank">Google Play Store →</a>
-    </div>
+    <section class="section" id="investment">
+      <h1> Investment Proposal</h1>
+      <p>Funding ask, use of funds, and how we plan to scale with the right partners.</p>
+      <a href="Investment_Proposal.pdf" target="_blank">View Proposal →</a>
+    </section>
 
-    <div class="card">
-      <h2>🎥 Product Demo Video</h2>
-      <a href="https://youtu.be/your-demo-video" target="_blank">Watch Demo →</a>
-    </div>
+    <section class="section" id="gtm">
+      <h1>GTM Strategy</h1>
+      <p>How we acquire users, retain communities, and scale across diaspora-led groups.</p>
+      <a href="GTM_Strategy.pdf" target="_blank">Read GTM Strategy →</a>
+    </section>
 
   </div>
-
-  <footer>
-    © 2025 Plarty | Built with ❤️ on GitHub Pages
-  </footer>
 
 </body>
 </html>
