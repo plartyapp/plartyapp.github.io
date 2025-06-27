@@ -8,8 +8,8 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: #f9fafc;
-      color: #333;
+      background: #fff;
+      color: #222;
     }
 
     header, .home, .viewer {
@@ -21,30 +21,36 @@
     header {
       text-align: center;
       padding-top: 40px;
+      background: #ff6600;
+      color: white;
+      border-bottom: 4px solid black;
     }
 
     header h1 {
-      font-size: 2em;
+      font-size: 2.2em;
       margin-bottom: 10px;
     }
 
     header p {
       font-size: 1em;
-      color: #666;
+      color: #fff;
     }
 
     .card {
-      background: white;
+      background: #fff;
       margin: 15px 0;
-      padding: 20px;
+      padding: 18px 22px;
       border-radius: 12px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      border-left: 6px solid #ff6600;
+      font-weight: 500;
       cursor: pointer;
-      transition: background 0.2s ease;
+      transition: transform 0.2s ease, background 0.3s ease;
     }
 
     .card:hover {
-      background: #f0f4f8;
+      background: #fff3eb;
+      transform: translateY(-2px);
     }
 
     .viewer {
@@ -57,10 +63,11 @@
       border: none;
       border-radius: 10px;
       margin-top: 20px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
     }
 
     .back-btn {
-      background: #007acc;
+      background: black;
       color: white;
       padding: 10px 18px;
       border: none;
@@ -71,11 +78,11 @@
     }
 
     .back-btn:hover {
-      background: #005fa3;
+      background: #222;
     }
 
     @media (max-width: 600px) {
-      header h1 { font-size: 1.6em; }
+      header h1 { font-size: 1.7em; }
       .card { font-size: 0.95em; }
     }
   </style>
@@ -84,17 +91,19 @@
 
   <header>
     <h1>📁 Plarty Data Room</h1>
-    <p>Everything you need to understand our story and strategy.</p>
+    <p>One place to explore our story, strategy, and traction</p>
   </header>
 
   <div class="home" id="home">
-    <div class="card" onclick="openDoc('Pitch_Deck.pdf')">📊 Pitch Deck</div>
     <div class="card" onclick="openDoc('Executive_Summary.pdf')">📄 Executive Summary</div>
-    <div class="card" onclick="openDoc('Grand_Vision.pdf')">🌍 Grand Vision</div>
-    <div class="card" onclick="openDoc('https://plarty.com')">🔗 Website</div>
+    <div class="card" onclick="openDoc('Pitch_Deck.pdf')">📊 Pitch Deck</div>
     <div class="card" onclick="openDoc('Traction.pdf')">📈 Traction</div>
+    <div class="card" onclick="openDoc('Grand_Vision.pdf')">🌍 Grand Vision</div>
     <div class="card" onclick="openDoc('Investment_Proposal.pdf')">💼 Investment Proposal</div>
+    <div class="card" onclick="openDoc('https://plartyapp.com')">🔗 Website</div>
+   <div class="card" onclick="openDoc('https://www.youtube.com/embed/YOUR_VIDEO_ID')">🎥 Videos</div> 
     <div class="card" onclick="openDoc('GTM_Strategy.pdf')">🚀 GTM Strategy</div>
+   
   </div>
 
   <div class="viewer" id="viewer">
