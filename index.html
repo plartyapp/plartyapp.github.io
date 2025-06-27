@@ -1,20 +1,130 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Plarty Data Room</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Plarty – Data Room</title>
   <style>
-    body { font-family: Arial, sans-serif; padding: 40px; background: #f9f9f9; }
-    h1 { color: #333; }
-    ul { line-height: 1.8; }
-    a { text-decoration: none; color: #007acc; }
+    body {
+      font-family: "Segoe UI", sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f7f9fb;
+      color: #333;
+    }
+
+    header {
+      background-color: #fff;
+      padding: 40px 20px 20px;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+      color: #222;
+    }
+
+    header p {
+      font-size: 1.1em;
+      color: #666;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .card {
+      background: #fff;
+      padding: 20px 25px;
+      margin-bottom: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      transition: transform 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+    }
+
+    .card h2 {
+      margin-top: 0;
+      font-size: 1.3em;
+    }
+
+    .card a {
+      display: inline-block;
+      margin-top: 10px;
+      text-decoration: none;
+      color: #0077cc;
+      font-weight: 500;
+    }
+
+    .card a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      color: #aaa;
+    }
   </style>
 </head>
 <body>
-  <h1>📁 Plarty Data Room</h1>
-  <p>Welcome! Here you can find all relevant documents and assets.</p>
-  <ul>
-    <li><a href="Plarty_Executive_Summary.pdf" target="_blank">Executive Summary</a></li>
-    <li><a href="PitchDeck_PlayMode.pdf" target="_blank">Pitch Deck</a></li>
-  </ul>
+
+  <header>
+    <h1>Plarty Data Room</h1>
+    <p>Resources to understand our vision, product, and growth plan</p>
+  </header>
+
+  <div class="container">
+
+    <div class="card">
+      <h2>💼 Investment Proposal</h2>
+      <a href="Investment_Proposal.pdf" target="_blank">View Document →</a>
+    </div>
+
+    <div class="card">
+      <h2>📊 Pitch Deck</h2>
+      <a href="Pitch_Deck.pdf" target="_blank">View Slide Deck →</a>
+    </div>
+
+    <div class="card">
+      <h2>📄 Executive Summary</h2>
+      <a href="Executive_Summary.pdf" target="_blank">Read Summary →</a>
+    </div>
+
+    <div class="card">
+      <h2>🌍 Grand Vision</h2>
+      <a href="Grand_Vision.pdf" target="_blank">Explore Our Vision →</a>
+    </div>
+
+    <div class="card">
+      <h2>🔗 Official Website</h2>
+      <a href="https://plartyapp.com" target="_blank">Visit Website →</a>
+    </div>
+
+    <div class="card">
+      <h2>📱 App Store Links</h2>
+      <a href="https://apps.apple.com/app/idXXXXXXXXX" target="_blank">iOS App Store →</a><br/>
+      <a href="https://play.google.com/store/apps/details?id=com.plarty" target="_blank">Google Play Store →</a>
+    </div>
+
+    <div class="card">
+      <h2>🎥 Product Demo Video</h2>
+      <a href="https://youtu.be/your-demo-video" target="_blank">Watch Demo →</a>
+    </div>
+
+  </div>
+
+  <footer>
+    © 2025 Plarty | Built with ❤️ on GitHub Pages
+  </footer>
+
 </body>
 </html>
