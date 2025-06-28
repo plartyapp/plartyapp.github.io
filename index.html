@@ -1,121 +1,643 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Plarty – Data Room</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #f9fafc;
-      color: #333;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- EDIT HERE: Change the title of your page -->
+    <title>Plarty | Investor Data Room</title>
+    <meta name="description"
+        content="Private investor data room for Plarty, including pitch deck, traction, and vision.">
 
-    header, .home, .viewer {
-      max-width: 800px;
-      margin: auto;
-      padding: 20px;
-    }
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
 
-    header {
-      text-align: center;
-      padding-top: 40px;
-    }
+    <!-- Font Awesome CDN for professional icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    header h1 {
-      font-size: 2em;
-      margin-bottom: 10px;
-    }
+    <style>
+        :root {
+            --primary-bg: #F9F4F0;
+            --secondary-bg: #FFF;
+            --accent-color: #0e2a3d;
+            --primary-color: #fd5d20;
+            --text-color: #0e2a3d;
+            --text-muted: #8b949e;
+            --border-color: #0e2a3d;
+        }
 
-    header p {
-      font-size: 1em;
-      color: #666;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    .card {
-      background: white;
-      margin: 15px 0;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-      cursor: pointer;
-      transition: background 0.2s ease;
-    }
+        html {
+            scroll-behavior: smooth;
+        }
 
-    .card:hover {
-      background: #f0f4f8;
-    }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
 
-    .viewer {
-      display: none;
-    }
+        .container {
+            max-width: 1366px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
+        }
 
-    .viewer iframe {
-      width: 100%;
-      height: 80vh;
-      border: none;
-      border-radius: 10px;
-      margin-top: 20px;
-    }
+        .header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
 
-    .back-btn {
-      background: #007acc;
-      color: white;
-      padding: 10px 18px;
-      border: none;
-      border-radius: 8px;
-      font-size: 1em;
-      cursor: pointer;
-      margin-bottom: 10px;
-    }
+        .header h1 {
+            font-size: 2.75rem;
+            font-weight: 700;
+            color: #0e2a3d;
+            margin-bottom: 0;
+            /* Removes the old bottom margin from the h1 */
+        }
 
-    .back-btn:hover {
-      background: #005fa3;
-    }
+        .header p {
+            font-size: 1.125rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-top: 0.5rem;
+        }
 
-    @media (max-width: 600px) {
-      header h1 { font-size: 1.6em; }
-      .card { font-size: 0.95em; }
-    }
-  </style>
+        .logo-title-container {
+            display: flex;
+            /* This is the key: enables flexbox layout */
+            align-items: center;
+            /* Vertically aligns the logo and text */
+            justify-content: center;
+            /* Horizontally centers the items as a group */
+            gap: 1rem;
+            /* Creates a nice space between the logo and title */
+        }
+
+        /* This styles the SVG logo itself */
+        .header-logo {
+            height: 2.75rem;
+            /* Sets the logo height to match the h1 font-size */
+            width: auto;
+            /* Allows the width to scale proportionally */
+        }
+
+        /* Grid Layout for the Data Room */
+        .data-room-grid {
+            display: grid;
+            gap: 2rem;
+            /* 1. Default to a single column for mobile phones */
+            grid-template-columns: 1fr;
+        }
+
+        /* 2. Switch to 2 columns for tablets and larger screens */
+        @media (min-width: 600px) {
+            .data-room-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* 3. Switch to 4 columns for large desktop screens */
+        @media (min-width: 1024px) {
+            .data-room-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        /* --- Mobile Header Styles --- */
+        /* This @media query targets screens 768px wide or smaller */
+        @media (max-width: 768px) {
+            .header {
+                /* Reduce the space below the header on mobile */
+                margin-bottom: 3rem;
+            }
+
+            .logo-title-container {
+                /* This is the key change: stack the logo and title vertically */
+                flex-direction: column;
+                /* Reduce the gap for a tighter vertical layout */
+                gap: 0.75rem;
+            }
+
+            .header-logo {
+                /* Give the logo a specific, larger size for mobile visibility */
+                height: 50px;
+            }
+
+            .header h1 {
+                /* Reduce the font size of the main title for smaller screens */
+                font-size: 2.25rem;
+            }
+
+            .header p {
+                /* Slightly reduce the subheading font size */
+                font-size: 1rem;
+            }
+        }
+
+        /* Card Styling for the Grid */
+        .card {
+            background-color: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            border-color: var(--accent-color);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .card-content {
+            flex-grow: 1;
+            /* Pushes the button to the bottom */
+            margin-bottom: 1.5rem;
+        }
+
+        .card-content h3 {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .card-content p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* This targets cards that will contain an image header */
+        .card-with-image {
+            padding: 0;
+            /* Remove the card's original padding to let the image touch the edges */
+            overflow: hidden;
+            /* Ensures the image corners are properly clipped */
+        }
+
+        /* This styles the image itself */
+        .card-image-header {
+            display: block;
+            width: 140px;
+            /* Make the image span the full width of the card */
+            height: 140px;
+            /* Give it a fixed height. Adjust this value to your liking. */
+            object-fit: cover;
+            /* This is key: it scales the image to fill the space without distortion */
+            align-items: center;
+        }
+
+        /* We need to add the padding back to the text content and button */
+        .card-with-image .card-content {
+            padding: 1.5rem 1.5rem 0;
+            /* Add padding to top, left, right */
+            margin-bottom: 1.5rem;
+            /* Keep the original margin */
+        }
+
+        .card-with-image .btn {
+            margin: 0 1.5rem 1.5rem;
+            /* Give the button margins to align it */
+            width: calc(100% - 3rem);
+            /* Adjust width to account for the new margins */
+        }
+
+        /* This is the NEW style for your image-based icons */
+        .card-icon-image {
+            /* --- Sizing --- */
+            width: 100px;
+            /* Set your desired width */
+            height: 100px;
+            /* Set your desired height */
+
+            /* --- Centering --- */
+            display: block;
+            /* Treat the image as a block for margin control */
+            margin-left: auto;
+            /* This automatically calculates the left margin */
+            margin-right: auto;
+            /* This automatically calculates the right margin */
+            margin-bottom: 1.5rem;
+            /* Adds space below the image, same as the icon */
+
+            /* --- Pro Tip: Make it a circle! (Optional) --- */
+            object-fit: cover;
+            /* Ensures image fills the space without distortion */
+            border-radius: 50%;
+            /* This will make your square image a perfect circle */
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            /* background-color: transparent; */
+            background: linear-gradient(135deg, rgb(253, 93, 32) 0%, rgb(255, 123, 71) 100%);
+            color: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-color);
+            color: #fff;
+            border-color: var(--accent-color);
+            transform: scale(1.03);
+        }
+
+        /* Modal styling (unchanged) */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(5px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0s 0.3s;
+            z-index: 1000;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+            transition-delay: 0s;
+        }
+
+        .modal-content {
+            position: relative;
+            background-color: var(--primary-bg);
+            width: 90%;
+            height: 90%;
+            max-width: 1200px;
+            border-radius: 8px;
+            padding: 1rem;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            font-size: 2.5rem;
+            color: #fff;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .modal-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 6px;
+        }
+
+        /* Animation styling (unchanged) */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .footer {
+            background-color: var(--secondary-bg);
+            /* Use the card background color for prominence */
+            padding: 4rem 1.5rem 3rem;
+            margin-top: 4rem;
+            /* Add space above the footer */
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .footer-container {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            /* Space between brand, socials, and copyright */
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            /* Removes underline from the link */
+            color: var(--text-color);
+        }
+
+        .footer-logo {
+            height: 36px;
+            /* A nice, medium size for the footer */
+            width: auto;
+        }
+
+        .footer-brand-name {
+            font-size: 1.75rem;
+            font-weight: 700;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 2rem;
+            /* Space between each social icon */
+        }
+
+        .footer-socials a {
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            /* Makes icons easily clickable */
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+
+        .footer-socials a:hover {
+            color: var(--accent-color);
+            transform: translateY(-3px);
+            /* A slight lift on hover */
+        }
+
+        .footer-copyright {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            max-width: 350px;
+            line-height: 1.5;
+        }
+    </style>
 </head>
+
 <body>
 
-  <header>
-    <h1>📁 Plarty Data Room</h1>
-    <p>Everything you need to understand our story and strategy.</p>
-  </header>
+    <main class="container">
+        <header class="header fade-in">
+            <!-- This new container will align the logo and title -->
+            <div class="logo-title-container">
+                <!-- The SVG logo -->
+                <svg class="header-logo" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clipPath="url(#clip0_6_543)">
+                        <path
+                            d="M18.7164 0.671616H1.07455C0.530511 0.671616 0.0894775 1.11265 0.0894775 1.65669V3.80595C0.0894775 4.34999 0.530511 4.79102 1.07455 4.79102H18.7164C19.2604 4.79102 19.7014 4.34999 19.7014 3.80595V1.65669C19.7014 1.11265 19.2604 0.671616 18.7164 0.671616Z"
+                            fill="#FF5C00"></path>
+                        <path
+                            d="M25.0746 26.5522H19.0746C18.5372 26.5522 18.0895 26.1045 18.0895 25.5672V23.4179C18.0895 22.8806 18.5372 22.4328 19.0746 22.4328H20.9552C21.4925 22.4328 21.9402 21.9851 21.9402 21.4478V1.65669C21.9402 1.11938 22.388 0.671616 22.9253 0.671616H40.5671C44.3283 0.671616 47.6418 3.44774 48 7.20894C48.4477 11.5075 45.0447 15.1791 40.7462 15.1791H32.6865C32.1492 15.1791 31.7014 14.7313 31.7014 14.194V12.0448C31.7014 11.5074 32.1492 11.0597 32.6865 11.0597H40.5671C42.1791 11.0597 43.7015 9.89551 43.8806 8.19401C44.0597 6.49252 42.6268 4.70147 40.7462 4.70147H27.0447C26.5074 4.70147 26.0596 5.14923 26.0596 5.68655V25.4776C26.0596 26.0149 25.6119 26.4627 25.0746 26.4627V26.5522Z"
+                            fill="#FF5C00"></path>
+                        <path
+                            d="M23.9999 41.3284C11.1044 41.3284 0.537192 31.1194 -0.00012207 18.403C-0.00012207 17.8657 0.44764 17.4179 0.984954 17.4179H3.13421C3.67152 17.4179 4.11929 17.7761 4.11929 18.3134C4.56705 28.8806 13.3432 37.2985 23.9999 37.2985C34.6566 37.2985 43.3432 28.8806 43.8805 18.3134C43.8805 17.7761 44.3283 17.4179 44.8656 17.4179H47.0149C47.5522 17.4179 47.9999 17.8657 47.9999 18.403C47.4626 31.209 36.8954 41.4179 23.9999 41.4179V41.3284Z"
+                            fill="#FF5C00"></path>
+                    </g>
+                    <defs>
+                        <clipPath id="clip0_6_543">
+                            <rect width="48" height="48" fill="white"></rect>
+                        </clipPath>
+                    </defs>
+                </svg>
+                <!-- The main title -->
+                <h1>Plarty Investor Data Room</h1>
+                <!-- The subheading -->
+                <p></p>
+            </div>
 
-  <div class="home" id="home">
-    <div class="card" onclick="openDoc('Plarty_Executive_Summary.pdf')">📄 Executive Summary</div>
-    <div class="card" onclick="openDoc('PitchDeck_PlayMode.pdf')">📊 Pitch Deck</div>
-    <div class="card" onclick="openDoc('Traction.pdf')">📈 Traction</div>
-    <div class="card" onclick="openDoc('Grand_Vision.pdf')">🌍 Grand Vision</div>
-    <div class="card" onclick="openDoc('https://plartyapp.com')">🔗 Website</div>
-    <div class="card" onclick="openDoc('https://www.youtube.com/embed/YOUR_VIDEO_ID')">🎥 Videos</div>
-    <div class="card" onclick="openDoc('Investment_Proposal.pdf')">💼 Investment Proposal</div>
-    <div class="card" onclick="openDoc('GTM_Strategy.pdf')">🚀 GTM Strategy</div>
-  </div>
+        </header>
 
-  <div class="viewer" id="viewer">
-    <button class="back-btn" onclick="goHome()">← Back to Home</button>
-    <iframe id="docFrame" src=""></iframe>
-  </div>
+        <div class="data-room-grid">
 
-  <script>
-    function openDoc(link) {
-      document.getElementById('home').style.display = 'none';
-      document.getElementById('viewer').style.display = 'block';
-      document.getElementById('docFrame').src = link;
-    }
+            <!-- Card: Executive Summary -->
+            <div class="card fade-in" style="transition-delay: 100ms;">
+                <!-- HTML EDIT: The icon is replaced by this img tag -->
+                <img src="executive_brief.png" alt="Executive Summary Visual" class="card-icon-image">
 
-    function goHome() {
-      document.getElementById('viewer').style.display = 'none';
-      document.getElementById('home').style.display = 'block';
-      document.getElementById('docFrame').src = '';
-    }
-  </script>
+                <div class="card-content">
+                    <h3>Executive Summary</h3>
+                    <p>Our value proposition and business thesis, summarized in a one-pager.</p>
+                </div>
+                <button class="btn modal-trigger" data-src="executive_summary.pdf">Open Document</button>
+            </div>
 
+            <!-- Card: Pitch Deck -->
+            <div class="card fade-in" style="transition-delay: 150ms;">
+                <img src="pitchdeck.png" alt="Executive Summary Visual" class="card-icon-image">
+                <div class="card-content">
+                    <h3>Pitch Deck</h3>
+                    <p>A concise overview of our problem, product, market, and opportunity.</p>
+                </div>
+                <!-- EDIT HERE: Ensure file name matches your upload -->
+                <button class="btn modal-trigger" data-src="pitch_deck.pdf">Open Deck</button>
+            </div>
+
+            <!-- Card: Grand Vision -->
+            <div class="card fade-in" style="transition-delay: 200ms;">
+                <img src="worldmap.png" alt="Executive Summary Visual" class="card-icon-image">
+                <div class="card-content">
+                    <h3>Grand Vision</h3>
+                    <p>Our long-term perspective on shaping the future of cultural tech.</p>
+                </div>
+                <!-- EDIT HERE: Ensure file name matches your upload -->
+                <button class="btn modal-trigger" data-src="grand_vision.pdf">Read Vision</button>
+            </div>
+
+            <!-- Card: Traction -->
+            <div class="card fade-in" style="transition-delay: 250ms;">
+                <!-- HTML EDIT: Replaced the icon div with an img tag -->
+                <img src="worldtraction.png" alt="Traction Icon" class="card-icon-image">
+
+                <div class="card-content">
+                    <h3>Traction</h3>
+                    <p>Key milestones, early growth signals, and community validation.</p>
+                </div>
+                <button class="btn modal-trigger" data-src="traction_deck.pdf">View Traction</button>
+            </div>
+
+            <!-- Card: GTM Strategy -->
+            <div class="card fade-in" style="transition-delay: 300ms;">
+                <img src="gtm_launch.png" alt="Executive Summary Visual" class="card-icon-image">
+                <div class="card-content">
+                    <h3>GTM Strategy</h3>
+                    <p>Our culture-first, network-effect driven go-to-market approach.</p>
+                </div>
+                <!-- EDIT HERE: Ensure file name matches your upload -->
+                <button class="btn modal-trigger" data-src="gtm_strategy.pdf">Read Strategy</button>
+            </div>
+
+            <!-- Card: Investment Proposal -->
+            <div class="card fade-in" style="transition-delay: 350ms;">
+                <img src="investment_growth.png" alt="Executive Summary Visual" class="card-icon-image">
+                <div class="card-content">
+                    <h3>Investment Proposal</h3>
+                    <p>Fundraising details, use of funds, and how we plan to scale.</p>
+                </div>
+                <!-- EDIT HERE: Ensure file name matches your upload -->
+                <button class="btn modal-trigger" data-src="investment_proposal.pdf">View Proposal</button>
+            </div>
+
+            <!-- Card: Website -->
+            <div class="card fade-in" style="transition-delay: 400ms;">
+                <img src="phone.png" alt="Executive Summary Visual" class="card-icon-image">
+                <div class="card-content">
+                    <h3>Website</h3>
+                    <p>Explore our live product, community features, and brand presence.</p>
+                </div>
+                <!-- EDIT HERE: Change to your actual website URL. This will open in a new tab. -->
+                <a href="https://plartyapp.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Site</a>
+            </div>
+
+            <!-- Card: Videos -->
+            <div class="card fade-in" style="transition-delay: 450ms;">
+                <img src="videos.png" alt="Executive Summary Visual" class="card-icon-image">
+                <div class="card-content">
+                    <h3>Videos</h3>
+                    <p>Watch our product demonstrations and vision walkthroughs.</p>
+                </div>
+                <!-- EDIT HERE: Change to your YouTube embed URL -->
+                <button class="btn modal-trigger" data-src="https://www.youtube.com/embed/your_video_id">Watch
+                    Demos</button>
+            </div>
+
+        </div>
+    </main>
+
+
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Footer Brand (Logo + Name) -->
+            <a href="#" class="footer-brand">
+                <svg class="footer-logo" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clipPath="url(#clip0_6_543)">
+                        <path
+                            d="M18.7164 0.671616H1.07455C0.530511 0.671616 0.0894775 1.11265 0.0894775 1.65669V3.80595C0.0894775 4.34999 0.530511 4.79102 1.07455 4.79102H18.7164C19.2604 4.79102 19.7014 4.34999 19.7014 3.80595V1.65669C19.7014 1.11265 19.2604 0.671616 18.7164 0.671616Z"
+                            fill="#FF5C00"></path>
+                        <path
+                            d="M25.0746 26.5522H19.0746C18.5372 26.5522 18.0895 26.1045 18.0895 25.5672V23.4179C18.0895 22.8806 18.5372 22.4328 19.0746 22.4328H20.9552C21.4925 22.4328 21.9402 21.9851 21.9402 21.4478V1.65669C21.9402 1.11938 22.388 0.671616 22.9253 0.671616H40.5671C44.3283 0.671616 47.6418 3.44774 48 7.20894C48.4477 11.5075 45.0447 15.1791 40.7462 15.1791H32.6865C32.1492 15.1791 31.7014 14.7313 31.7014 14.194V12.0448C31.7014 11.5074 32.1492 11.0597 32.6865 11.0597H40.5671C42.1791 11.0597 43.7015 9.89551 43.8806 8.19401C44.0597 6.49252 42.6268 4.70147 40.7462 4.70147H27.0447C26.5074 4.70147 26.0596 5.14923 26.0596 5.68655V25.4776C26.0596 26.0149 25.6119 26.4627 25.0746 26.4627V26.5522Z"
+                            fill="#FF5C00"></path>
+                        <path
+                            d="M23.9999 41.3284C11.1044 41.3284 0.537192 31.1194 -0.00012207 18.403C-0.00012207 17.8657 0.44764 17.4179 0.984954 17.4179H3.13421C3.67152 17.4179 4.11929 17.7761 4.11929 18.3134C4.56705 28.8806 13.3432 37.2985 23.9999 37.2985C34.6566 37.2985 43.3432 28.8806 43.8805 18.3134C43.8805 17.7761 44.3283 17.4179 44.8656 17.4179H47.0149C47.5522 17.4179 47.9999 17.8657 47.9999 18.403C47.4626 31.209 36.8954 41.4179 23.9999 41.4179V41.3284Z"
+                            fill="#FF5C00"></path>
+                    </g>
+                    <defs>
+                        <clipPath id="clip0_6_543">
+                            <rect width="48" height="48" fill="white"></rect>
+                        </clipPath>
+                    </defs>
+                </svg>
+                <h3 class="footer-brand-name">Plarty</h3>
+            </a>
+
+            <!-- Social Media Links -->
+            <div class="footer-socials">
+                <!-- EDIT THESE LINKS -->
+                <a href="https://plartyapp.com" target="_blank" rel="noopener noreferrer" title="Main Website"><i
+                        class="fas fa-globe"></i></a>
+                <a href="https://www.youtube.com/@PlartyApp" target="_blank" rel="noopener noreferrer" title="YouTube"><i
+                        class="fab fa-youtube"></i></a>
+                <a href="https://www.instagram.com/plartyapp/" target="_blank" rel="noopener noreferrer"
+                    title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/company/advitlabs/about" target="_blank" rel="noopener noreferrer"
+                    title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            </div>
+
+            <!-- Copyright Message -->
+            <p class="footer-copyright">
+                © 2025 Plarty. All Rights Reserved. For Investor Use Only.
+            </p>
+        </div>
+    </footer>
+
+
+    <!-- Modal for viewing content -->
+    <div class="modal-overlay" id="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close-btn">&times;</button>
+            <iframe class="modal-iframe" id="modal-iframe" src=""
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript is unchanged as it relies on class names which are still present.
+        document.addEventListener('DOMContentLoaded', function () {
+            // Modal Logic
+            const modalTriggers = document.querySelectorAll('.modal-trigger');
+            const modalOverlay = document.getElementById('modal-overlay');
+            const modalCloseBtn = document.getElementById('modal-close-btn');
+            const modalIframe = document.getElementById('modal-iframe');
+
+            modalTriggers.forEach(trigger => {
+                trigger.addEventListener('click', function () {
+                    const src = this.getAttribute('data-src');
+                    if (src) {
+                        modalIframe.src = src;
+                        modalOverlay.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                    }
+                });
+            });
+
+            function closeModal() {
+                modalOverlay.classList.remove('active');
+                modalIframe.src = '';
+                document.body.style.overflow = 'auto';
+            }
+
+            modalCloseBtn.addEventListener('click', closeModal);
+            modalOverlay.addEventListener('click', (e) => e.target === modalOverlay && closeModal());
+            document.addEventListener('keydown', (e) => e.key === 'Escape' && modalOverlay.classList.contains('active') && closeModal());
+
+            // Fade-in Animation Logic
+            const faders = document.querySelectorAll('.fade-in');
+            const appearOptions = { threshold: 0.1, rootMargin: "0px" };
+            const appearOnScroll = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, appearOptions);
+            faders.forEach(fader => appearOnScroll.observe(fader));
+        });
+    </script>
 </body>
+
 </html>
