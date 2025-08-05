@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- EDIT HERE: Change the title of your page -->
-    <title>Plarty | Investor Data Room</title>
+    <title>Plarty™ | Investor Data Room</title>
     <meta name="description"
-        content="Private investor data room for Plarty, including pitch deck, traction, and vision.">
+        content="Private investor data room for Plarty™, including pitch deck, traction, and vision.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -80,6 +80,71 @@
             color: var(--text-muted);
             max-width: 600px;
             margin-top: 0.5rem;
+        }
+
+        /* Access Request Section Styles */
+        .access-request-section {
+            background-color: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-top: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .access-notice {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .access-icon {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            flex-shrink: 0;
+        }
+
+        .access-text {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .access-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+            padding: 0.875rem 1.5rem;
+            text-decoration: none;
+        }
+
+        .access-btn i {
+            font-size: 1rem;
+        }
+
+        /* Mobile styles for access section */
+        @media (max-width: 768px) {
+            .access-request-section {
+                margin-top: 1.5rem;
+                padding: 1.5rem;
+            }
+
+            .access-notice {
+                flex-direction: column;
+                gap: 0.75rem;
+                text-align: center;
+            }
+
+            .access-icon {
+                align-self: center;
+                margin-top: 0;
+            }
         }
 
         .logo-title-container {
@@ -264,12 +329,16 @@
             border-radius: 6px;
             text-decoration: none;
             font-weight: bold;
+            font-size: inherit;
+            font-family: inherit;
             /* background-color: transparent; */
             background: linear-gradient(135deg, rgb(253, 93, 32) 0%, rgb(255, 123, 71) 100%);
             color: var(--secondary-bg);
             border: 1px solid var(--border-color);
             cursor: pointer;
             transition: all 0.2s ease;
+            text-align: center;
+            box-sizing: border-box;
         }
 
         .btn:hover {
@@ -277,6 +346,19 @@
             color: #fff;
             border-color: var(--accent-color);
             transform: scale(1.03);
+        }
+
+        /* Ensure buttons and links with .btn class have identical styling */
+        button.btn {
+            font-size: inherit;
+            font-family: inherit;
+            line-height: inherit;
+        }
+
+        a.btn {
+            font-size: inherit;
+            font-family: inherit;
+            line-height: inherit;
         }
 
         /* Modal styling (unchanged) */
@@ -411,7 +493,7 @@
         .footer-copyright {
             font-size: 0.8rem;
             color: var(--text-muted);
-            max-width: 350px;
+            max-width: 390px;
             line-height: 1.5;
         }
     </style>
@@ -443,9 +525,24 @@
                     </defs>
                 </svg>
                 <!-- The main title -->
-                <h1>Plarty Investor Data Room</h1>
-                <!-- The subheading -->
-                <p></p>
+                <h1>Plarty™ Investor Data Room</h1>
+                
+            </div>
+
+            <!-- Request Access Section -->
+            <div class="access-request-section">
+                <div class="access-notice">
+                    <i class="fas fa-lock access-icon"></i>
+                    <p class="access-text">
+                        Access to documents is restricted to approved investors only. 
+                        If you don't have access, please request it below.
+                    </p>
+                </div>
+                <a href="mailto:investor.relations@advitlabs.com?subject=Plarty Data Room Access Request&body=Dear Plarty Team,%0D%0A%0D%0AI am interested in reviewing your investor data room materials and would like to request access.%0D%0A%0D%0AInvestor Details:%0D%0A- Name: [Please fill in your name]%0D%0A- Organization: [Please fill in your organization/fund name]%0D%0A%0D%0AThank you for considering my request. I look forward to learning more about Plarty's vision and growth opportunity.%0D%0A%0D%0ABest regards,%0D%0A[Your name]" 
+                   class="btn access-btn">
+                    <i class="fas fa-envelope"></i>
+                    Request Access
+                </a>
             </div>
 
         </header>
@@ -461,7 +558,7 @@
                     <h3>Executive Summary</h3>
                     <p>Our value proposition and business thesis, summarized in a one-pager.</p>
                 </div>
-                <button class="btn modal-trigger" data-src="https://drive.google.com/file/d/1DrMM-JoZ7Y1ObsmSbwQQLtAQwTpWQk3A/view?usp=sharing">Open Document</button>
+                <a href="https://drive.google.com/file/d/1DrMM-JoZ7Y1ObsmSbwQQLtAQwTpWQk3A/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn">Open Document</a>
             </div>
 
             <!-- Card: Pitch Deck -->
@@ -472,7 +569,7 @@
                     <p>A concise overview of our problem, product, market, and opportunity.</p>
                 </div>
                 
-                <button class="btn modal-trigger" data-src="https://drive.google.com/file/d/1FoPhITl36IEe41EqTos1JSupyYwaPQuC/view?usp=sharing">Open Deck</button>
+                <a href="https://drive.google.com/file/d/1FoPhITl36IEe41EqTos1JSupyYwaPQuC/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn">Open Deck</a>
             </div>
 
             <!-- Card: Grand Vision -->
@@ -483,7 +580,7 @@
                     <p>Our long-term perspective on shaping the future of cultural tech.</p>
                 </div>
                 
-                <button class="btn modal-trigger" data-src="https://drive.google.com/file/d/1aJzNUWMkw84u9pnUImvyJcFDiKzNqXqg/view?usp=sharing">Read Vision</button>
+                <a href="https://drive.google.com/file/d/1aJzNUWMkw84u9pnUImvyJcFDiKzNqXqg/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn">Read Vision</a>
             </div>
 
             <!-- Card: Traction -->
@@ -495,7 +592,7 @@
                     <h3>Traction</h3>
                     <p>Key milestones, early growth signals, and community validation.</p>
                 </div>
-                <button class="btn modal-trigger" data-src="https://drive.google.com/file/d/19YIllim-2sfmsxnHh_I8dZoJ1nZUPVDo/view?usp=sharing">View Traction</button>
+                <a href="https://drive.google.com/file/d/19YIllim-2sfmsxnHh_I8dZoJ1nZUPVDo/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn">View Traction</a>
             </div>
 
             <!-- Card: GTM Strategy -->
@@ -506,7 +603,7 @@
                     <p>Our culture-first, network-effect driven go-to-market approach.</p>
                 </div>
                 
-                <button class="btn modal-trigger" data-src="https://drive.google.com/file/d/1zqnxcvvh1_luKjOUW2Wu61ihQxM7oehA/view?usp=sharing">Read Strategy</button>
+                <a href="https://drive.google.com/file/d/1zqnxcvvh1_luKjOUW2Wu61ihQxM7oehA/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn">Read Strategy</a>
             </div>
 
             <!-- Card: Investment Proposal -->
@@ -517,7 +614,7 @@
                     <p>Fundraising details, use of funds, and how we plan to scale.</p>
                 </div>
                 
-                <button class="btn modal-trigger" data-src="https://drive.google.com/file/d/1VduqtWw4vNsUm0Gxgg4VHpKkdGFBqSJl/view?usp=sharing">View Proposal</button>
+                <a href="https://drive.google.com/file/d/1VduqtWw4vNsUm0Gxgg4VHpKkdGFBqSJl/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn">View Proposal</a>
             </div>
 
             <!-- Card: Website -->
@@ -569,7 +666,7 @@
                         </clipPath>
                     </defs>
                 </svg>
-                <h3 class="footer-brand-name">Plarty</h3>
+                <h3 class="footer-brand-name">Plarty™</h3>
             </a>
 
             <!-- Social Media Links -->
@@ -586,7 +683,8 @@
 
             <!-- Copyright Message -->
             <p class="footer-copyright">
-                © 2025 Plarty. All Rights Reserved. For Investor Use Only.
+                © 2025 Plarty™. All Rights Reserved. For Investor Use Only.<br>
+                Plarty™ is a trademark of ADVITLABS-FZCO.
             </p>
         </div>
     </footer>
