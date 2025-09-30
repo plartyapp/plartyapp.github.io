@@ -1,1 +1,1 @@
-#plartyapp.github.io
+plartyapp.github.io
